@@ -51,13 +51,12 @@ var buttonsModule = angular.module('ngKeycodeTracer', [])
 
             },
             link: function (scope, iElement) {
-                //var template = $compile('<div id="keycode-tracer" style="transition: all 0.5s; position: fixed; top: 0; left: 0; height: {{height}}px; border: 1px solid red; width: 1px;transform-origin: 0 0;transform: rotateZ(-{{angle}}deg);"></div><p class="keycode-info" style="position: fixed; top: 10px; right: 10px; box-shadow: 0 0 3px; padding: 4px; text-align: center;">keycode<span style="display: block; font-weight: bold;" ng-bind="keycode"></span></p>')(scope);
-                var template = $compile(
+                var tracerText = $compile(
                         '<div id="keycode-tracer" ng-show="showTracer" style="position: fixed; top: 0; left: 0; height: {{height}}px; border: 1px solid red; width: 1px;transform-origin: 0 0;transform: rotateZ(-{{angle}}deg);"></div>' +
-                        '<p class="keycode-info" style="position: fixed; top: 10px; right: 10px; {{blindScreen || contrastScreen ? \'color: #FFF;\' : \'\'}}box-shadow: 0 0 3px {{blindScreen ? \'#FFF\' : \'\'}} {{keyPressed ? \', 0 0 20px\' : \'\'}} {{keyPressed && blindScreen ? \'#FFF\' : \'\'}} ; padding: 4px; text-align: center;">pressed keycode<span style="display: block; font-weight: bold;" ng-bind="keycode"></span></p>'
+                        '<p class="keycode-info" style="position: fixed; top: 10px; right: 10px; box-shadow: 0 0 3px {{keyPressed ? \', 0 0 20px\' : \'\'}}; padding: 4px; text-align: center;">pressed keycode<span style="display: block; font-weight: bold;" ng-bind="keycode"></span></p>'
                     )(scope);
 
-                iElement.append(template);
+                iElement.append(tracerText);
             }
         }
     });
